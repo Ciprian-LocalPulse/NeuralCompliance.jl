@@ -1,0 +1,39 @@
+diff --git a/.JuliaFormatter.toml b/.JuliaFormatter.toml
+index 3b4d25a..796195d 100644
+--- a/.JuliaFormatter.toml
++++ b/.JuliaFormatter.toml
+@@ -7,7 +7,7 @@ whitespace_ops_in_indices = true
+ remove_extra_newlines = true
+ import_to_using = false
+ pipe_to_function_call = false
+-short_to_long_function_def = true
++short_to_long_function_def = false
+ always_use_return = false
+ whitespace_in_kwargs = true
+ trailing_comma = true
+diff --git a/Project.toml b/Project.toml
+index 0198010..221ce43 100644
+--- a/Project.toml
++++ b/Project.toml
+@@ -5,8 +5,6 @@ version = "0.1.0"
+ 
+ [deps]
+ Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+-LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+-Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+ SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+ Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+diff --git a/src/NeuralCompliance.jl b/src/NeuralCompliance.jl
+index 2ad2aed..966e1a6 100644
+--- a/src/NeuralCompliance.jl
++++ b/src/NeuralCompliance.jl
+@@ -31,8 +31,6 @@ stacks ([`DenseLayer`](@ref)) or arbitrary Julia functions.
+ module NeuralCompliance
+ 
+ using Dates
+-using LinearAlgebra
+-using Printf
+ using Random
+ using SHA
+ using Statistics
