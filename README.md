@@ -1,4 +1,3 @@
-
 <div align="center">
 
 <img src="assets/NeuralCompliance.jl.png" alt="NeuralCompliance.jl logo" width="360" />
@@ -6,19 +5,14 @@
 # NeuralCompliance.jl
 
 ### A Zero-Trust Neural Systems Validation and Compliance Framework
-<div align="center">
-
-# NeuralCompliance.jl
-
-### A Zero-Trust Neural Systems Validation and Compliance Framework
 
 *Mathematically certified auditing for neural networks deployed in regulated environments — no Python, no ML framework dependency, pure Julia.*
 
-[![CI](https://github.com/neuralcompliance/NeuralCompliance.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/neuralcompliance/NeuralCompliance.jl/actions/workflows/CI.yml)
-[![Documentation](https://github.com/neuralcompliance/NeuralCompliance.jl/actions/workflows/Documentation.yml/badge.svg)](https://github.com/neuralcompliance/NeuralCompliance.jl/actions/workflows/Documentation.yml)
-[![codecov](https://codecov.io/gh/neuralcompliance/NeuralCompliance.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/neuralcompliance/NeuralCompliance.jl)
-[![Stable Docs](https://img.shields.io/badge/docs-stable-blue.svg)](https://neuralcompliance.github.io/NeuralCompliance.jl/stable)
-[![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://neuralcompliance.github.io/NeuralCompliance.jl/dev)
+[![CI](https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/actions/workflows/CI.yml)
+[![Documentation](https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/actions/workflows/Documentation.yml/badge.svg)](https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/actions/workflows/Documentation.yml)
+[![codecov](https://codecov.io/gh/Ciprian-LocalPulse/NeuralCompliance.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/Ciprian-LocalPulse/NeuralCompliance.jl)
+[![Stable Docs](https://img.shields.io/badge/docs-stable-blue.svg)](https://Ciprian-LocalPulse.github.io/NeuralCompliance.jl/stable)
+[![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://Ciprian-LocalPulse.github.io/NeuralCompliance.jl/dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 [![Julia](https://img.shields.io/badge/julia-1.9%2B-9558B2.svg)](https://julialang.org)
@@ -76,7 +70,7 @@ to vet.
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/neuralcompliance/NeuralCompliance.jl")
+Pkg.add(url="https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl")
 ```
 
 Requires Julia 1.9 or later.
@@ -194,6 +188,12 @@ soundness justification.
 
 If you use `NeuralCompliance.jl` in academic or industrial work, please
 cite it using the metadata in [`CITATION.cff`](CITATION.cff).
+
+## Support
+
+If this project is useful to you, see [FUNDING.md](FUNDING.md) for ways
+to support continued development — or simply star the repository,
+report bugs, or open a pull request.
 
 ## License
 
