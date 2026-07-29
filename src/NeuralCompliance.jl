@@ -41,13 +41,20 @@ using Statistics
 # Includes (order matters: types before code that dispatches on them)
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Includes (order matters: types and constraints before modules using them)
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Includes (order matters: types & interval_bounds before constraints)
+# ---------------------------------------------------------------------------
+
 include("core/types.jl")
-include("validation/interval_bounds.jl")
-include("core/constraints.jl")
+include("validation/interval_bounds.jl")  # <--- MUST BE BEFORE constraints.jl (defines Interval)
+include("core/constraints.jl")          # <--- Uses Interval and types
 include("validation/robustness.jl")
 include("validation/audit_logger.jl")
 include("utils/metrics.jl")
-
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
