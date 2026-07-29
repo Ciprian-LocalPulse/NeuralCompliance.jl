@@ -33,8 +33,11 @@ Random.seed!(2026)
 
 function vendor_fraud_score(x::Vector{Float64})
     amount, hour_of_day, distance_from_home, velocity_24h = x
-    z = 0.9 * tanh(amount / 500) + 0.4 * sin(hour_of_day / 24 * 2pi) +
-        0.6 * tanh(distance_from_home / 100) + 0.5 * tanh(velocity_24h / 5)
+    z =
+        0.9 * tanh(amount / 500) +
+        0.4 * sin(hour_of_day / 24 * 2pi) +
+        0.6 * tanh(distance_from_home / 100) +
+        0.5 * tanh(velocity_24h / 5)
     return 1 / (1 + exp(-z))
 end
 
@@ -76,14 +79,14 @@ lipschitz_result = check_constraint(lipschitz_constraint, stress_report.empirica
 # Monotonicity sweep: transaction velocity in the last 24h should never
 # *decrease* the fraud score as it increases.
 velocity_grid = collect(0.0:0.5:10.0)
-scores_along_velocity =
-    [vendor_fraud_score([x0[1], x0[2], x0[3], v]) for v in velocity_grid]
+scores_along_velocity = [vendor_fraud_score([x0[1], x0[2], x0[3], v]) for v in velocity_grid]
 
 monotonicity_constraint = MonotonicityConstraint(
     "fraud_score_monotone_in_velocity_24h", 4, :increasing; risk_level = HIGH
 )
-monotonicity_result =
-    check_constraint(monotonicity_constraint, velocity_grid, scores_along_velocity)
+monotonicity_result = check_constraint(
+    monotonicity_constraint, velocity_grid, scores_along_velocity
+)
 
 # ---------------------------------------------------------------------------
 # 4. Assemble and persist the audit trail, exactly as with the
@@ -98,7 +101,9 @@ println()
 println("Overall compliant: $(overall_passed(report))")
 
 mkpath("audit_output")
-write_report(report, joinpath("audit_output", "vendor_fraud_scorer_v3_audit.md"); format = :markdown)
+write_report(
+    report, joinpath("audit_output", "vendor_fraud_scorer_v3_audit.md"); format = :markdown
+)
 write_report(report, joinpath("audit_output", "vendor_fraud_scorer_v3_audit.json"); format = :json)
 
 println("Audit trail written to ./audit_output/")

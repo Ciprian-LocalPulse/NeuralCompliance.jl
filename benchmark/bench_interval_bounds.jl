@@ -4,7 +4,7 @@
 #
 # Performance benchmarks for sound interval bound propagation
 # (`propagate_bounds` / `affine_propagate`), the core primitive used to
-# certify `BoundConstraint`s (see WHITEPAPER.md §4). Interval arithmetic
+# certify `BoundConstraint`s (see WHITEPAPER.md  4). Interval arithmetic
 # does roughly 2x the flops of plain Float64 forward passes (center +
 # radius), so this suite tracks that overhead across model sizes and
 # guards against regressions as the implementation evolves.
@@ -55,9 +55,7 @@ end
 # ---------------------------------------------------------------------------
 
 const MODEL_SHAPES = Dict(
-    "small" => [8, 16, 1],
-    "medium" => [64, 128, 128, 8],
-    "large" => [256, 512, 512, 512, 16],
+    "small" => [8, 16, 1], "medium" => [64, 128, 128, 8], "large" => [256, 512, 512, 512, 16]
 )
 
 const SUITE = BenchmarkGroup()
@@ -92,7 +90,7 @@ end
 #   judge(median(run(SUITE)), median(baseline))
 # ---------------------------------------------------------------------------
 
-if abspath(PROGRAM_FILE) == @__FILE__ || "--ci" in ARGS
+if abspath(PROGRAM_FILE) == (@__FILE__) || "--ci" in ARGS
     println("Running NeuralCompliance.jl interval-bound-propagation benchmarks...")
     tune!(SUITE)
     results = run(SUITE; verbose = true)
