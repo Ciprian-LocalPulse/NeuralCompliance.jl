@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/NeuralCompliance.jl.png" alt="NeuralCompliance.jl logo" width="360" />
+<img src="assets/NeuralCompliance.jl.png" alt="NeuralCompliance.jl logo" width="960" />
 
 # NeuralCompliance.jl
 
