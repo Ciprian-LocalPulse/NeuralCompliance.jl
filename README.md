@@ -3,7 +3,6 @@
 
 <img src="assets/NeuralCompliance.jl.png" alt="NeuralCompliance.jl logo" width="360" />
 
-# NeuralCompliance.jl
 
 ### A Zero-Trust Neural Systems Validation and Compliance Framework
 <div align="center">
