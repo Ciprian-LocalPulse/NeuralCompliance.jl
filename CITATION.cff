@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "NeuralCompliance.jl: A Zero-Trust Neural Systems Validation and Compliance Framework"
+type: software
+authors:
+  - name: "NeuralCompliance Contributors"
+repository-code: "https://github.com/neuralcompliance/NeuralCompliance.jl"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-29
+keywords:
+  - julia
+  - neural-network-verification
+  - formal-verification
+  - interval-arithmetic
+  - model-risk-management
+  - ai-compliance
+  - adversarial-robustness

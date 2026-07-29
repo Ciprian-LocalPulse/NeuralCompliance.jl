@@ -1,0 +1,29 @@
+# Julia build/artifact files
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/docs/build/
+/docs/Manifest.toml
+Manifest.toml
+
+# Package build artifacts
+/deps/deps.jl
+/deps/build.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Example / scratch output
+/examples/audit_output/
+audit_output/
+
+# Environment
+.env
+.env.local

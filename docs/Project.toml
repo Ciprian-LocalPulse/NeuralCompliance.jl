@@ -1,0 +1,6 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+NeuralCompliance = "8f3b1a2e-6c4d-4e7a-9b2f-1a2b3c4d5e6f"
+
+[compat]
+Documenter = "1"
