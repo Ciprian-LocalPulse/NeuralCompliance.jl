@@ -2,6 +2,8 @@
 
 **A Zero-Trust Neural Systems Validation and Compliance Framework**
 
+Author: Ciprian Ștefan Pleșca
+
 *Version 0.1.0 · MIT License · Pure Julia*
 
 ---
