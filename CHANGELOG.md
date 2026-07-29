@@ -14,6 +14,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Issue templates (bug report, feature request) and a pull request template
   under `.github/`.
 - Cross-links between `README.md`, `ROADMAP.md`, and `WHITEPAPER.md`.
+- `.github/workflows/TagBot.yml` to auto-tag and release once
+  JuliaRegistrator approves a new version.
+- `.github/workflows/CompatHelper.yml` to open automated `[compat]` bump
+  PRs for `Dates`, `SHA`, `Statistics`, and other dependencies.
+- `Aqua.jl` quality-assurance test (`test/aqua_test.jl`, wired into
+  `test/runtests.jl`) covering method ambiguities, unbound type
+  parameters, undocumented exports, stale/undeclared dependencies, and
+  type piracy.
+- `benchmark/` folder with a `BenchmarkTools.jl` suite
+  (`bench_interval_bounds.jl`) for interval bound propagation
+  performance across small/medium/large model sizes.
+- `.github/FUNDING.yml` so GitHub's native "❤️ Sponsor" button surfaces
+  the project's PayPal link directly in the repo header.
+- `.github/dependabot.yml` to keep GitHub Actions versions
+  (`actions/checkout`, etc.) patched.
+- `.github/CODEOWNERS` requiring maintainer review on all pull requests.
+- Second example, `examples/black_box_stress_test.jl`, demonstrating the
+  empirical (Monte Carlo stress-testing) validation path for
+  vendor-supplied black-box models, per WHITEPAPER.md §6.
+- `CHANGELOG.md` is now mirrored into `docs/src/changelog.md` at build
+  time (`docs/make.jl`) so it appears in the rendered documentation site.
 
 ## [0.1.0] — 2026
 

@@ -4,6 +4,7 @@
 *.jl.mem
 /docs/build/
 /docs/Manifest.toml
+/docs/src/changelog.md
 Manifest.toml
 
 # Package build artifacts

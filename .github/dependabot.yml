@@ -1,0 +1,16 @@
+version: 2
+updates:
+  # Keep the GitHub Actions used in CI.yml, Documentation.yml, TagBot.yml,
+  # and CompatHelper.yml current (e.g. actions/checkout@v4). This does
+  # NOT manage Julia package dependencies -- see CompatHelper.yml for
+  # that -- it only tracks the Actions runner ecosystem itself.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "ci"

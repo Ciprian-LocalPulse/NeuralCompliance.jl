@@ -94,7 +94,12 @@ Priority: usefulness beyond models trained in Julia.
 Priority: making the package easy and safe to depend on.
 
 - [ ] Registration in Julia's General registry (`Pkg.add("NeuralCompliance")`
-      instead of a URL install).
+      instead of a URL install). Prerequisite automation is already in
+      place: `.github/workflows/TagBot.yml` (auto-tags releases once
+      JuliaRegistrator approves a version), `.github/workflows/CompatHelper.yml`
+      (keeps `[compat]` bounds current), and an `Aqua.jl` quality
+      test (`test/aqua_test.jl`) covering ambiguities, stale/undeclared
+      dependencies, and type piracy.
 - [ ] Hosted stable + dev documentation via GitHub Pages
       (`Documenter.jl` deploy already scaffolded in
       `.github/workflows/Documentation.yml`).

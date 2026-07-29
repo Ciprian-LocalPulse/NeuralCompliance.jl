@@ -1,0 +1,8 @@
+[deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8bf9"
+NeuralCompliance = "8f3b1a2e-6c4d-4e7a-9b2f-1a2b3c4d5e6f"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[compat]
+BenchmarkTools = "1"
+julia = "1.9"

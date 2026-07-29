@@ -6,4 +6,5 @@ using Random
     include("test_constraints.jl")
     include("test_validation.jl")
     include("test_audit.jl")
+    include("aqua_test.jl")
 end
