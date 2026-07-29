@@ -8,7 +8,7 @@ documentation.
 ## Development setup
 
 ```bash
-git clone https://github.com/neuralcompliance/NeuralCompliance.jl
+git clone https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl
 cd NeuralCompliance.jl
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 ```

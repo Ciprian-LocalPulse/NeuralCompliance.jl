@@ -17,6 +17,10 @@ document-type: "Technical Whitepaper"
 
 Version 0.1.0 — 2026 — MIT License
 
+> This is the academic/technical whitepaper. For installation and usage,
+> see the [README](README.md); for what's planned next, see the
+> [ROADMAP](ROADMAP.md).
+
 ---
 
 ## Abstract

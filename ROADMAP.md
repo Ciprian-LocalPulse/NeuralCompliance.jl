@@ -10,6 +10,10 @@ Nothing below is a commitment with a date attached. It is a statement of
 priorities, and it will be revised as the project evolves and as the
 community using it surfaces real requirements.
 
+See the [README](README.md) for what's usable today, and the
+[WHITEPAPER](WHITEPAPER.md) for the mathematical grounding behind the
+sound-verification phases below.
+
 ```mermaid
 timeline
     title NeuralCompliance.jl — Trajectory

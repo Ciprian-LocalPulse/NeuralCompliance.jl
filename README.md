@@ -36,6 +36,12 @@ decision support — where a model-risk-management (MRM) function or an
 external auditor needs a reproducible, mathematically grounded
 compliance argument, not a sampled accuracy number.
 
+> For the full mathematical treatment (soundness proofs, threat model,
+> and empirical fallback for black-box models), see the
+> [**WHITEPAPER**](WHITEPAPER.md). For where the project is headed —
+> constraint families, layer coverage, registry submission — see the
+> [**ROADMAP**](ROADMAP.md).
+
 The framework treats every model as **untrusted by default** (hence
 "zero-trust"): it does not assume a model behaves well outside the
 region it was tested on, and it does not assume vendor-supplied
@@ -183,6 +189,10 @@ request expectations. This is a compliance library: correctness bugs
 in the bound-propagation logic have outsized real-world consequences,
 so new validation logic must ship with tests and, where applicable, a
 soundness justification.
+
+See [CHANGELOG.md](CHANGELOG.md) for release history and
+[SECURITY.md](SECURITY.md) for how to report vulnerabilities, including
+correctness issues that could produce a false "compliant" result.
 
 ## Citation
 
