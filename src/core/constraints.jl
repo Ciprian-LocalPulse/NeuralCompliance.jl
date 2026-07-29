@@ -19,7 +19,7 @@ for sampled points.
 """
 function check_constraint(c::BoundConstraint, output::Interval)
     passed = output.lo >= c.lower && output.hi <= c.upper
-    details = Dict{Symbol,Any}(
+    details = Dict{Symbol, Any}(
         :certified_lower => output.lo,
         :certified_upper => output.hi,
         :required_lower => c.lower,
@@ -41,7 +41,7 @@ function check_constraint(c::BoundConstraint, outputs::AbstractVector{<:Real})
     lo, hi = extrema(outputs)
     passed = lo >= c.lower && hi <= c.upper
     n_violations = count(x -> x < c.lower || x > c.upper, outputs)
-    details = Dict{Symbol,Any}(
+    details = Dict{Symbol, Any}(
         :observed_lower => lo,
         :observed_upper => hi,
         :required_lower => c.lower,
@@ -61,7 +61,7 @@ by [`estimate_lipschitz`](@ref).
 """
 function check_constraint(c::LipschitzConstraint, estimated_constant::Real)
     passed = estimated_constant <= c.max_constant
-    details = Dict{Symbol,Any}(
+    details = Dict{Symbol, Any}(
         :estimated_constant => estimated_constant,
         :max_allowed => c.max_constant,
         :margin => c.max_constant - estimated_constant,
@@ -79,11 +79,17 @@ ascending) and `ys` are the corresponding scalar model outputs.
 function check_constraint(c::MonotonicityConstraint, xs::AbstractVector, ys::AbstractVector{<:Real})
     issorted(xs) || throw(ArgumentError("xs must be sorted ascending for a monotonicity sweep"))
     diffs = diff(ys)
-    passed = c.direction === :increasing ? all(d -> d >= -eps(Float64) * 10, diffs) :
-                                            all(d -> d <= eps(Float64) * 10, diffs)
-    n_violations = c.direction === :increasing ? count(d -> d < -eps(Float64) * 10, diffs) :
-                                                  count(d -> d > eps(Float64) * 10, diffs)
-    details = Dict{Symbol,Any}(
+    passed = if c.direction === :increasing
+        all(d -> d >= -eps(Float64) * 10, diffs)
+    else
+        all(d -> d <= eps(Float64) * 10, diffs)
+    end
+    n_violations = if c.direction === :increasing
+        count(d -> d < -eps(Float64) * 10, diffs)
+    else
+        count(d -> d > eps(Float64) * 10, diffs)
+    end
+    details = Dict{Symbol, Any}(
         :input_index => c.input_index,
         :direction => c.direction,
         :n_points => length(xs),

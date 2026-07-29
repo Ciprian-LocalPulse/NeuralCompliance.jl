@@ -36,16 +36,16 @@ end
 
     mktempdir() do dir
         path_md = joinpath(dir, "report.md")
-        write_report(report, path_md; format=:markdown)
+        write_report(report, path_md; format = :markdown)
         @test isfile(path_md)
         @test occursin("io_model", read(path_md, String))
 
         path_json = joinpath(dir, "report.json")
-        write_report(report, path_json; format=:json)
+        write_report(report, path_json; format = :json)
         @test isfile(path_json)
         @test occursin("io_model", read(path_json, String))
 
-        @test_throws ArgumentError write_report(report, joinpath(dir, "x.txt"); format=:bogus)
+        @test_throws ArgumentError write_report(report, joinpath(dir, "x.txt"); format = :bogus)
     end
 end
 

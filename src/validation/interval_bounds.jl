@@ -24,10 +24,10 @@ A closed real interval `[lo, hi]`. Supports elementwise arithmetic
 needed for sound bound propagation through linear layers and common
 activations.
 """
-struct Interval{T<:Real}
+struct Interval{T <: Real}
     lo::T
     hi::T
-    function Interval(lo::T, hi::T) where {T<:Real}
+    function Interval(lo::T, hi::T) where {T <: Real}
         lo <= hi || throw(ArgumentError("Interval requires lo <= hi, got [$lo, $hi]"))
         new{T}(lo, hi)
     end
@@ -90,7 +90,7 @@ activation function `act` (must accept and return `Interval` or
 `Vector{<:Real}` uniformly, e.g. [`relu`](@ref), [`sigmoid_bound`](@ref),
 `identity`).
 """
-struct DenseLayer{W<:AbstractMatrix,B<:AbstractVector,F<:Function}
+struct DenseLayer{W <: AbstractMatrix, B <: AbstractVector, F <: Function}
     weights::W
     bias::B
     activation::F
@@ -144,9 +144,9 @@ end
 Convenience wrapper: builds per-coordinate input intervals from
 elementwise lower/upper vectors and propagates them through `layers`.
 """
-function certify_output_bounds(layers::Vector{<:DenseLayer},
-                                input_lo::AbstractVector{<:Real},
-                                input_hi::AbstractVector{<:Real})
+function certify_output_bounds(
+    layers::Vector{<:DenseLayer}, input_lo::AbstractVector{<:Real}, input_hi::AbstractVector{<:Real}
+)
     length(input_lo) == length(input_hi) ||
         throw(ArgumentError("input_lo and input_hi must have the same length"))
     input = Interval.(input_lo, input_hi)

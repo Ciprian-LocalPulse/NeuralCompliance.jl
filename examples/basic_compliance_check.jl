@@ -16,28 +16,27 @@ using NeuralCompliance
 #    Flux.jl, and converted to plain Float64 matrices for this framework.)
 # ---------------------------------------------------------------------------
 
-W1 = [ 0.8  -1.2   0.3;
-      -0.5   0.9   0.1;
-       0.4  -0.3   0.7;
-      -0.2   0.6  -0.4]
+W1 = [
+    0.8 -1.2 0.3;
+    -0.5 0.9 0.1;
+    0.4 -0.3 0.7;
+    -0.2 0.6 -0.4
+]
 b1 = [0.1, -0.2, 0.05, 0.0]
 
 W2 = reshape([1.1, -0.8, 0.5, -0.3], 1, 4)
 b2 = [-0.2]
 
-layers = [
-    DenseLayer(W1, b1, relu),
-    DenseLayer(W2, b2, sigmoid_bound),
-]
+layers = [DenseLayer(W1, b1, relu), DenseLayer(W2, b2, sigmoid_bound)]
 
 # ---------------------------------------------------------------------------
 # 2. Declare the compliance constraints a regulator (or internal model
 #    risk management team) requires this model to satisfy.
 # ---------------------------------------------------------------------------
 
-constraints = AbstractConstraint[
-    BoundConstraint("default_probability_in_unit_interval", 0.0, 1.0; risk_level=CRITICAL),
-]
+constraints = AbstractConstraint[BoundConstraint(
+    "default_probability_in_unit_interval", 0.0, 1.0; risk_level = CRITICAL
+),]
 
 # ---------------------------------------------------------------------------
 # 3. Certify the model over an input region using sound interval bound
@@ -45,7 +44,7 @@ constraints = AbstractConstraint[
 # ---------------------------------------------------------------------------
 
 input_lo = [-2.0, -2.0, -2.0]   # normalized feature ranges
-input_hi = [ 2.0,  2.0,  2.0]
+input_hi = [2.0, 2.0, 2.0]
 
 report = run_compliance_audit("credit_risk_v1", layers, input_lo, input_hi, constraints)
 
@@ -62,7 +61,7 @@ function forward(x::Vector{Float64})
 end
 
 x0 = [0.0, 0.0, 0.0]
-stress_report = adversarial_stress_test(forward, x0, 0.5; n_samples=2000, tolerance=0.4)
+stress_report = adversarial_stress_test(forward, x0, 0.5; n_samples = 2000, tolerance = 0.4)
 
 println()
 println("Adversarial stress test around x0 = $x0, epsilon = 0.5")
@@ -76,8 +75,8 @@ println("  robust (<=0.4 tol):    $(stress_report.robust)")
 # ---------------------------------------------------------------------------
 
 mkpath("audit_output")
-write_report(report, joinpath("audit_output", "credit_risk_v1_audit.md"); format=:markdown)
-write_report(report, joinpath("audit_output", "credit_risk_v1_audit.json"); format=:json)
+write_report(report, joinpath("audit_output", "credit_risk_v1_audit.md"); format = :markdown)
+write_report(report, joinpath("audit_output", "credit_risk_v1_audit.json"); format = :json)
 
 println()
 println("Audit trail written to ./audit_output/")

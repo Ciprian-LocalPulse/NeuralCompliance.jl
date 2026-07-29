@@ -54,22 +54,48 @@ include("utils/metrics.jl")
 
 export
     # core types
-    RiskLevel, LOW, MEDIUM, HIGH, CRITICAL,
-    AbstractConstraint, BoundConstraint, LipschitzConstraint, MonotonicityConstraint,
+    RiskLevel,
+    LOW,
+    MEDIUM,
+    HIGH,
+    CRITICAL,
+    AbstractConstraint,
+    BoundConstraint,
+    LipschitzConstraint,
+    MonotonicityConstraint,
     ComplianceResult,
     # interval bounds
-    Interval, width, midpoint, relu, sigmoid_bound, tanh_bound,
-    DenseLayer, propagate_bounds, affine_propagate, certify_output_bounds,
+    Interval,
+    width,
+    midpoint,
+    relu,
+    sigmoid_bound,
+    tanh_bound,
+    DenseLayer,
+    propagate_bounds,
+    affine_propagate,
+    certify_output_bounds,
     # constraint checking
     check_constraint,
     # robustness
-    StressTestReport, adversarial_stress_test, estimate_lipschitz,
+    StressTestReport,
+    adversarial_stress_test,
+    estimate_lipschitz,
     # audit
-    AuditReport, generate_report, to_markdown, to_json, write_report,
-    model_fingerprint, overall_passed, highest_failing_risk,
+    AuditReport,
+    generate_report,
+    to_markdown,
+    to_json,
+    write_report,
+    model_fingerprint,
+    overall_passed,
+    highest_failing_risk,
     # metrics
-    max_abs_deviation, mean_absolute_error, root_mean_square,
-    interval_tightness, risk_score,
+    max_abs_deviation,
+    mean_absolute_error,
+    root_mean_square,
+    interval_tightness,
+    risk_score,
     # orchestration
     run_compliance_audit
 
@@ -92,10 +118,14 @@ Non-`BoundConstraint` entries in `constraints` are skipped with a
 [`adversarial_stress_test`](@ref) and the `MonotonicityConstraint`
 sweep workflow in the documentation).
 """
-function run_compliance_audit(model_name::AbstractString, layers::Vector{<:DenseLayer},
-                               input_lo::AbstractVector{<:Real}, input_hi::AbstractVector{<:Real},
-                               constraints::Vector{<:AbstractConstraint};
-                               model_data=layers)
+function run_compliance_audit(
+    model_name::AbstractString,
+    layers::Vector{<:DenseLayer},
+    input_lo::AbstractVector{<:Real},
+    input_hi::AbstractVector{<:Real},
+    constraints::Vector{<:AbstractConstraint};
+    model_data = layers,
+)
     output_intervals = certify_output_bounds(layers, input_lo, input_hi)
 
     results = ComplianceResult[]
@@ -105,8 +135,11 @@ function run_compliance_audit(model_name::AbstractString, layers::Vector{<:Dense
             for (idx, out_i) in enumerate(output_intervals)
                 res = check_constraint(c, out_i)
                 res = ComplianceResult(
-                    "$(res.constraint_name)[output=$idx]", res.passed, res.risk_level,
-                    res.details, res.timestamp,
+                    "$(res.constraint_name)[output=$idx]",
+                    res.passed,
+                    res.risk_level,
+                    res.details,
+                    res.timestamp,
                 )
                 push!(results, res)
             end

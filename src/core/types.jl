@@ -54,14 +54,15 @@ Requires that every component of a model's output lies within
 `[lower, upper]`. Typically used to certify, e.g., that a credit-risk
 score or a probability output can never leave a mandated range.
 """
-struct BoundConstraint{T<:Real} <: AbstractConstraint
+struct BoundConstraint{T <: Real} <: AbstractConstraint
     name::String
     lower::T
     upper::T
     risk_level::RiskLevel
 
-    function BoundConstraint(name::String, lower::T, upper::T;
-                              risk_level::RiskLevel=HIGH) where {T<:Real}
+    function BoundConstraint(
+        name::String, lower::T, upper::T; risk_level::RiskLevel = HIGH
+    ) where {T <: Real}
         lower <= upper || throw(ArgumentError("lower bound must be <= upper bound"))
         new{T}(name, lower, upper, risk_level)
     end
@@ -81,8 +82,9 @@ struct LipschitzConstraint <: AbstractConstraint
     max_constant::Float64
     risk_level::RiskLevel
 
-    function LipschitzConstraint(name::String, max_constant::Float64;
-                                  risk_level::RiskLevel=MEDIUM)
+    function LipschitzConstraint(
+        name::String, max_constant::Float64; risk_level::RiskLevel = MEDIUM
+    )
         max_constant > 0 || throw(ArgumentError("max_constant must be positive"))
         new(name, max_constant, risk_level)
     end
@@ -103,8 +105,9 @@ struct MonotonicityConstraint <: AbstractConstraint
     direction::Symbol   # :increasing or :decreasing
     risk_level::RiskLevel
 
-    function MonotonicityConstraint(name::String, input_index::Int, direction::Symbol;
-                                     risk_level::RiskLevel=HIGH)
+    function MonotonicityConstraint(
+        name::String, input_index::Int, direction::Symbol; risk_level::RiskLevel = HIGH
+    )
         direction in (:increasing, :decreasing) ||
             throw(ArgumentError("direction must be :increasing or :decreasing"))
         input_index > 0 || throw(ArgumentError("input_index must be positive"))
@@ -126,11 +129,15 @@ struct ComplianceResult
     constraint_name::String
     passed::Bool
     risk_level::RiskLevel
-    details::Dict{Symbol,Any}
+    details::Dict{Symbol, Any}
     timestamp::DateTime
 end
 
-function ComplianceResult(name::AbstractString, passed::Bool, risk_level::RiskLevel,
-                           details::Dict{Symbol,Any}=Dict{Symbol,Any}())
+function ComplianceResult(
+    name::AbstractString,
+    passed::Bool,
+    risk_level::RiskLevel,
+    details::Dict{Symbol, Any} = Dict{Symbol, Any}(),
+)
     ComplianceResult(String(name), passed, risk_level, details, now())
 end

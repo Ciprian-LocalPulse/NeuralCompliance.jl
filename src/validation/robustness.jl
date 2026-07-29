@@ -48,10 +48,15 @@ is intended as a fast, dependency-free triage tool, complementary to
 -- not a replacement for -- the certified bounds in
 [`propagate_bounds`](@ref).
 """
-function adversarial_stress_test(f, x0::AbstractVector{<:Real}, epsilon::Real;
-                                  n_samples::Int=1000, norm::Symbol=:linf,
-                                  rng::AbstractRNG=Random.default_rng(),
-                                  tolerance::Real=Inf)
+function adversarial_stress_test(
+    f,
+    x0::AbstractVector{<:Real},
+    epsilon::Real;
+    n_samples::Int = 1000,
+    norm::Symbol = :linf,
+    rng::AbstractRNG = Random.default_rng(),
+    tolerance::Real = Inf,
+)
     n_samples > 0 || throw(ArgumentError("n_samples must be positive"))
     epsilon >= 0 || throw(ArgumentError("epsilon must be non-negative"))
     d = length(x0)
@@ -98,9 +103,14 @@ search cannot overestimate the true supremum), so it should be treated
 as a diagnostic signal, not a certified upper bound. For certified
 bounds use interval-based propagation where the architecture is known.
 """
-function estimate_lipschitz(f, x0::AbstractVector{<:Real}, epsilon::Real;
-                             n_samples::Int=500, rng::AbstractRNG=Random.default_rng())
-    report = adversarial_stress_test(f, x0, epsilon; n_samples=n_samples, rng=rng)
+function estimate_lipschitz(
+    f,
+    x0::AbstractVector{<:Real},
+    epsilon::Real;
+    n_samples::Int = 500,
+    rng::AbstractRNG = Random.default_rng(),
+)
+    report = adversarial_stress_test(f, x0, epsilon; n_samples = n_samples, rng = rng)
     return report.empirical_lipschitz
 end
 
