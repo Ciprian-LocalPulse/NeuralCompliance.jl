@@ -2,6 +2,10 @@
 CurrentModule = NeuralCompliance
 ```
 
+```@docs
+NeuralCompliance
+```
+
 # NeuralCompliance.jl
 
 *A Zero-Trust Neural Systems Validation and Compliance Framework, in

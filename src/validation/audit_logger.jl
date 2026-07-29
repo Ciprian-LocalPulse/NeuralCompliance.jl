@@ -22,6 +22,11 @@ struct AuditReport
     results::Vector{ComplianceResult}
 end
 
+"""
+    overall_passed(report::AuditReport) -> Bool
+
+Returns `true` if every constraint check in `report` passed.
+"""
 overall_passed(r::AuditReport) = all(res -> res.passed, r.results)
 
 """
@@ -131,14 +136,10 @@ _json_escape(s::AbstractString) = replace(s, "\"" => "\\\"")
 Writes the audit report to disk in `:markdown` or `:json` format,
 inferred from `path`'s extension if `format` is not given explicitly.
 """
-function write_report(report::AuditReport, path::AbstractString; format::Symbol = :markdown)
-    content = if format === :markdown
-        to_markdown(report)
-    elseif format === :json
-        to_json(report)
-    else
-        throw(ArgumentError("format must be :markdown or :json"))
-    end
+function write_report(report::AuditReport, path::AbstractString; format::Symbol=:markdown)
+    content = format === :markdown ? to_markdown(report) :
+              format === :json ? to_json(report) :
+              throw(ArgumentError("format must be :markdown or :json"))
     open(path, "w") do io
         write(io, content)
     end
