@@ -10,7 +10,7 @@ tags:
   - adversarial robustness
 authors:
   - name: Ciprian Stefan Plesca
-    orcid: 0000-0000-0000-0000
+    orcid: 0009-0006-1340-0232
     affiliation: 1
 affiliations:
   - name: Independent Researcher
