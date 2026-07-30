@@ -4,7 +4,7 @@ title: "NeuralCompliance.jl: A Zero-Trust Neural Systems Validation and Complian
 type: software
 authors:
   - name: "NeuralCompliance Contributors"
-repository-code: "https://github.com/neuralcompliance/NeuralCompliance.jl"
+repository-code: "https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl"
 license: MIT
 version: 0.1.0
 date-released: 2026-07-29

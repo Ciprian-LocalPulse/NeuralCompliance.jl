@@ -65,6 +65,12 @@ function check_constraint(c::LipschitzConstraint, estimated_constant::Real)
         :estimated_constant => estimated_constant,
         :max_allowed => c.max_constant,
         :margin => c.max_constant - estimated_constant,
+        # NOTE: `estimate_lipschitz` currently produces an *empirical*
+        # (sampling-based) lower bound, not a certified upper bound.
+        # Tagging the method explicitly avoids silently overstating the
+        # strength of this guarantee relative to the IBP-backed checks
+        # above. See ROADMAP.md for the certified-estimator work item.
+        :method => :empirical_sampling,
     )
     ComplianceResult(c.name, passed, c.risk_level, details)
 end
@@ -95,6 +101,11 @@ function check_constraint(c::MonotonicityConstraint, xs::AbstractVector, ys::Abs
         :n_points => length(xs),
         :n_violations => n_violations,
         :max_step => length(diffs) > 0 ? maximum(abs.(diffs)) : 0.0,
+        # Monotonicity is certified only along the swept sample points,
+        # not over the continuous input region -- an empirical, not a
+        # sound/IBP-backed, guarantee. Flagged explicitly for the same
+        # reason as LipschitzConstraint above.
+        :method => :empirical_sampling,
     )
     ComplianceResult(c.name, passed, c.risk_level, details)
 end

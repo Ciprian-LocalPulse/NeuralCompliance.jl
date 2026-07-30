@@ -11,9 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.gitattributes` to enforce consistent LF line endings across the repo.
 - `CHANGELOG.md` (this file).
 - `SECURITY.md` with a vulnerability-disclosure process.
-- Issue templates (bug report, feature request) and a pull request template
-  under `.github/`.
+- Issue templates (bug report, feature request, compliance question) and a
+  pull request template under `.github/`, plus `.github/ISSUE_TEMPLATE/config.yml`
+  linking to the security policy and discussions.
+- `.github/FUNDING.yml` so GitHub's native "Sponsor" button is active
+  (previously only `FUNDING.md` existed at the repo root, which GitHub does
+  not read for that button).
+- `.github/dependabot.yml` for weekly Julia package and GitHub Actions
+  dependency updates.
+- `COMPLIANCE_METHODOLOGY.md` at the repository root — a clone-visible
+  explanation of what `:interval_bound_propagation` vs. `:empirical_sampling`
+  results actually guarantee (the wiki equivalent is not included in
+  `git clone`).
+- `THREAT_MODEL.md` at the repository root, describing in-scope threats,
+  explicit non-goals, and the empirical-vs-certified misuse failure mode.
+- `paper.md` / `paper.bib` — a draft JOSS (Journal of Open Source Software)
+  submission.
+- Explicit `:method => :empirical_sampling` key on
+  `check_constraint(::LipschitzConstraint, ...)` and
+  `check_constraint(::MonotonicityConstraint, ...)`, for consistency with
+  the `:method` key already present on `BoundConstraint` checks.
 - Cross-links between `README.md`, `ROADMAP.md`, and `WHITEPAPER.md`.
+
+### Fixed
+- Inconsistent repository references (`neuralcompliance/NeuralCompliance.jl`
+  vs. `Ciprian-LocalPulse/NeuralCompliance.jl`) in `docs/make.jl`,
+  `docs/src/index.md`, and `CITATION.cff`, now aligned with the org used
+  everywhere else (README badges, install instructions).
 - `.github/workflows/TagBot.yml` to auto-tag and release once
   JuliaRegistrator approves a new version.
 - `.github/workflows/CompatHelper.yml` to open automated `[compat]` bump

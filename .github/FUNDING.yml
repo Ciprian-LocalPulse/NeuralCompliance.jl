@@ -1,20 +1,6 @@
-# These are supported funding model platforms
+# These are supported funding model platforms.
+# GitHub reads this file to activate the "Sponsor" button on the repository
+# page. Full context and additional payment methods (bank transfer, BTC, ETH)
+# are documented in FUNDING.md at the repository root.
 
-github: []
-patreon: []
-open_collective: []
-ko_fi: []
-tidelift: []
-community_bridge: []
-liberapay: []
-issuehunt: []
-otechie: []
-lfx_crowdfunding: []
-custom:
-  - "https://paypal.me/agentflowenterprise"
-
-# Note: bank transfer (IBAN) and cryptocurrency addresses listed in
-# FUNDING.md are not expressible as GitHub Sponsor-button links, since
-# `custom` only accepts up to 4 plain URLs. FUNDING.md remains the
-# canonical, complete list of support options; this file only surfaces
-# the PayPal link natively via the "❤️ Sponsor" button.
+custom: ["https://paypal.me/agentflowenterprise"]

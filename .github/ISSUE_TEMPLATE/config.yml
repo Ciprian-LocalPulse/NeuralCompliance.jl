@@ -1,8 +1,8 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
   - name: Security vulnerability
-    url: https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/security/advisories/new
-    about: Please report security issues privately — see SECURITY.md, do not open a public issue.
-  - name: General question / discussion
+    url: https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/security/policy
+    about: Please do NOT open a public issue for security vulnerabilities. See SECURITY.md for the private reporting process.
+  - name: General discussion
     url: https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/discussions
-    about: For usage questions that aren't a bug or feature request.
+    about: Questions that aren't a bug, feature request, or compliance question.

@@ -49,7 +49,7 @@ The framework treats every model as untrusted by default:
 
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/neuralcompliance/NeuralCompliance.jl")
+Pkg.add(url="https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl")
 ```
 
 ## Quick example

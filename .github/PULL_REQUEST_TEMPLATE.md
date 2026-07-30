@@ -5,36 +5,30 @@ What does this PR change, and why?
 ## Type of change
 
 - [ ] Bug fix
-- [ ] New feature (constraint family, layer support, report format, etc.)
+- [ ] New feature
+- [ ] Soundness fix (changes what a certification result guarantees — see below)
 - [ ] Documentation
-- [ ] Refactor / internal (no behavior change)
+- [ ] Refactor / internal, no behavior change
 - [ ] CI / tooling
 
-## Correctness checklist (for changes to `src/core/` or `src/validation/`)
+## Soundness impact
 
-- [ ] New/changed logic is covered by tests in `test/`.
-- [ ] If this touches sound bound propagation (`interval_bounds.jl`) or
-      constraint checking (`constraints.jl`), I've included a soundness
-      justification (why the bounds/checks can't produce a false
-      "compliant" result) in the PR description or code comments.
-- [ ] If this touches audit reporting (`audit_logger.jl`), I've verified
-      fingerprint/provenance determinism still holds.
+> If this PR touches `src/validation/interval_bounds.jl`,
+> `src/core/constraints.jl`, or anything else in the certified path,
+> please answer explicitly:
 
-## Testing
+- Does this change what any `check_constraint` method certifies? (Y/N)
+- If yes, does the `:method` key in the resulting `ComplianceResult.details` still accurately describe the guarantee being made?
+- Were `test/test_constraints.jl` / `test/test_validation.jl` updated to cover the change?
 
-How did you verify this? Include commands run, e.g.:
+## Checklist
 
-```bash
-julia --project=. -e 'using Pkg; Pkg.test()'
-```
+- [ ] `Pkg.test()` passes locally
+- [ ] Code formatted per `.JuliaFormatter.toml` (`using JuliaFormatter; format(".")`)
+- [ ] Docstrings added/updated for any new or changed public API
+- [ ] `CHANGELOG.md` updated under `[Unreleased]`
+- [ ] Relevant `ROADMAP.md` item checked off, if applicable
 
 ## Related issues
 
 Closes #
-
-## Checklist
-
-- [ ] I've read [CONTRIBUTING.md](../CONTRIBUTING.md).
-- [ ] Code is formatted per `.JuliaFormatter.toml` / Blue style.
-- [ ] I've updated [CHANGELOG.md](../CHANGELOG.md) under `[Unreleased]`.
-- [ ] I've updated documentation in `docs/` if public API changed.

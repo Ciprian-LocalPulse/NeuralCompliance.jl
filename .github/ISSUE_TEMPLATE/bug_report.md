@@ -1,30 +1,39 @@
 ---
 name: Bug report
-about: Report incorrect behavior, including unsound bounds or audit-report issues
-title: "[BUG] "
+about: Report incorrect behavior in NeuralCompliance.jl
+title: "[Bug]: "
 labels: bug
 assignees: ''
 ---
 
-## Description
+## Summary
 
-A clear description of what's wrong.
+A clear, one- or two-sentence description of what's wrong.
 
-## Severity
+## Is this a soundness bug?
 
-- [ ] Correctness issue (e.g. unsound bounds, a constraint that can be
-      bypassed, a non-reproducible audit fingerprint) — please also see
-      [SECURITY.md](../../SECURITY.md) if this could mislead a compliance
-      decision.
-- [ ] Crash / error
-- [ ] Documentation or usability issue
+> ⚠️ If this bug means `check_constraint` or `propagate_bounds` can
+> report `passed = true` for a model that actually violates its
+> constraint, please say so explicitly here and label the issue
+> `soundness-bug`. These are treated as highest priority, since a false
+> "certified compliant" result is the single worst failure mode this
+> package can have.
 
-## Minimal reproduction
+- [ ] Yes, this affects the correctness of a certification result
+- [ ] No, this is a different kind of bug (docs, ergonomics, performance, etc.)
+
+## Environment
+
+- `NeuralCompliance.jl` version:
+- Julia version (`versioninfo()`):
+- OS:
+
+## Minimal reproducible example
 
 ```julia
 using NeuralCompliance
 
-# minimal code that reproduces the issue
+# Paste the smallest possible code snippet that reproduces the issue.
 ```
 
 ## Expected behavior
@@ -33,16 +42,8 @@ What you expected to happen.
 
 ## Actual behavior
 
-What actually happened. Include the full error message or stack trace if
-applicable.
-
-## Environment
-
-- `NeuralCompliance.jl` version / commit:
-- Julia version (`julia --version`):
-- OS:
+What actually happened. Include the full error message / stack trace if there is one.
 
 ## Additional context
 
-Anything else relevant (e.g. whether this affects the sound IBP path, the
-Monte Carlo stress-testing path, or both).
+Anything else that might help — related constraints, model architecture, links to relevant `ROADMAP.md` items, etc.

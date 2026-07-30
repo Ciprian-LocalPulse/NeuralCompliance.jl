@@ -1,27 +1,36 @@
 ---
 name: Feature request
-about: Suggest new functionality (e.g. a new constraint family, layer support, or report format)
-title: "[FEATURE] "
+about: Suggest a new capability, constraint type, or architectural extension
+title: "[Feature]: "
 labels: enhancement
 assignees: ''
 ---
 
-## Problem
+## What problem does this solve?
 
-What are you trying to do that the library doesn't currently support?
+Describe the gap. Is this about supported architectures (e.g. beyond
+dense/ReLU-sequential networks), a new constraint type, a new
+verification method, tooling, or something else?
 
 ## Proposed solution
 
-Describe the feature you'd like. If it touches the sound-verification path
-(interval bound propagation, constraint checking), please note whether you
-have a soundness argument in mind, or whether this is meant for the
-empirical/stress-testing path instead.
+A concrete description of the API, behavior, or integration you have
+in mind. Code sketches are welcome, even pseudocode.
+
+```julia
+# Example of what usage might look like
+```
 
 ## Alternatives considered
 
-Any workarounds you're using today, or other approaches you considered.
+Any other approaches you thought about, and why you're not proposing
+those instead.
+
+## Does this affect the certified/sound guarantees?
+
+- [ ] This is a purely additive feature (new capability, doesn't touch existing soundness guarantees)
+- [ ] This changes or extends what counts as a "certified" result — please explain the reasoning below
 
 ## Additional context
 
-Links to relevant papers, standards (e.g. SR 11-7, EU AI Act), or roadmap
-items in [ROADMAP.md](../../ROADMAP.md) this might relate to.
+Links to relevant papers, prior art in other verification tools, or related `ROADMAP.md` items.

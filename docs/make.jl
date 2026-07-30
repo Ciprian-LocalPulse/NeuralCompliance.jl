@@ -15,11 +15,11 @@ end
 makedocs(;
     modules = [NeuralCompliance],
     authors = "NeuralCompliance Contributors",
-    repo = "https://github.com/neuralcompliance/NeuralCompliance.jl/blob/{commit}{path}#{line}",
+    repo = "https://github.com/Ciprian-LocalPulse/NeuralCompliance.jl/blob/{commit}{path}#{line}",
     sitename = "NeuralCompliance.jl",
     format = Documenter.HTML(;
         prettyurls = get(ENV, "CI", "false") == "true",
-        canonical = "https://neuralcompliance.github.io/NeuralCompliance.jl",
+        canonical = "https://Ciprian-LocalPulse.github.io/NeuralCompliance.jl",
         edit_link = "main",
         assets = String[],
     ),
@@ -31,4 +31,4 @@ makedocs(;
     ],
 )
 
-deploydocs(; repo = "github.com/neuralcompliance/NeuralCompliance.jl", devbranch = "main")
+deploydocs(; repo = "github.com/Ciprian-LocalPulse/NeuralCompliance.jl", devbranch = "main")

@@ -1,16 +1,22 @@
 version: 2
 updates:
-  # Keep the GitHub Actions used in CI.yml, Documentation.yml, TagBot.yml,
-  # and CompatHelper.yml current (e.g. actions/checkout@v4). This does
-  # NOT manage Julia package dependencies -- see CompatHelper.yml for
-  # that -- it only tracks the Actions runner ecosystem itself.
+  # Julia package dependencies (currently only SHA.jl, plus stdlib
+  # deps which Dependabot will simply have nothing to report on).
+  - package-ecosystem: "julia"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
+
+  # Keep the CI/Documentation GitHub Actions workflows themselves
+  # up to date (actions/checkout, julia-actions/*, codecov-action, etc.)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    groups:
-      github-actions:
-        patterns:
-          - "*"
-    commit-message:
-      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "ci"
+    open-pull-requests-limit: 5
